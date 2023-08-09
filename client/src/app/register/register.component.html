@@ -1,1 +1,32 @@
-<p>register works!</p>
+<form [formGroup] = "registerForm" (ngSubmit) = "register()" novalidate>
+ <mat-form-field appearance="outline">
+    <mat-label>First name</mat-label>
+    First Name
+    <input matInput placeholder="Name" formControlName="name">
+ </mat-form-field>
+ <mat-form-field appearance="outline">
+    <mat-label>Middle name</mat-label>
+    <input matInput placeholder="Middle name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+ <mat-form-field>
+    <mat-label></mat-label>
+    Email
+    <input matInput placeholder="xyz@gmail.com" formControlName="email">
+ </mat-form-field>
+ <mat-form-field>
+    <mat-label>Password</mat-label>
+    Psassword
+    <input matInput type="password" formControlName="password">
+ </mat-form-field>
+ <mat-form-field>
+    <button color="primary" [disabled]="!registerForm.valid"  mat-raised-button>Submit!</button>
+ </mat-form-field>
+</form> 
