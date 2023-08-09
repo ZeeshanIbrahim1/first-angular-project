@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators , AbstractControl, ValidatorFn } from '@angular/forms';
 // import {MatIconModule} from '@angular/material/icon';
 // import {MatInputModule} from '@angular/material/input';
 // import {MatFormFieldModule} from '@angular/material/form-field';
@@ -24,14 +24,26 @@ export class RegisterComponent {
     return new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)]),
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required, Validators.minLength(7)])
+      password: new FormControl("", [Validators.required, Validators.minLength(7)]),
+      confirmPassword: new FormControl("", [Validators.required, this.matchPasswordValidator('password')]),
     })
   }
-  // registerForm(){
-
-  // }
+  matchPasswordValidator(fieldToMatch: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const matchingControl = control.root.get(fieldToMatch);
+      return matchingControl && control.value !== matchingControl.value ? { passwordMismatch: true } : null;
+    };}
   register(){
       console.log(this.registerForm.value)
+      this.registerForm.reset();
+      this.clearErrorStates();
   }
-
+  clearErrorStates() {
+    const formControls = this.registerForm.controls;
+  
+    Object.keys(formControls).forEach(controlName => {
+      const control = formControls[controlName];
+      control.setErrors(null);
+    });
+  }
 }

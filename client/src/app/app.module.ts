@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -16,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PatientsComponent } from './patients/patients.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     NavigationComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    PatientsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +39,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatListModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -6,7 +6,10 @@ const pool = mysql.createPool({
     host: config.host,
     user: config.user,
     database: config.database,
-    passwor: config.password,
-})
+    password: config.password,
+    connectionLimit: 10,
+});
 
-module.export = pool.promise();
+
+
+module.exports = pool.promise();
