@@ -1,0 +1,49 @@
+<form class="patientForm" [formGroup]="patientForm" (ngSubmit)="addPatient()" novalidate>
+  <mat-grid-list cols="3" rowHeight="90px"  class="matgrid">
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="Name" formControlName="firstname">
+        <mat-error *ngIf="patientForm.get('firstname').hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="patientForm.get('firstname').hasError('minlength')">Name must be at least 2 characters long</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+      <mat-grid-tile class="matgrid">
+        
+      <mat-form-field appearance="outline">
+        <mat-label>Middle name</mat-label>
+        <input matInput placeholder="Middle name" >
+      </mat-form-field>
+</mat-grid-tile>
+      <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="lastname" formControlName="lastname">
+        <mat-error *ngIf="patientForm.get('lastname').hasError('required')">Last Name is required</mat-error>
+        <mat-error *ngIf="patientForm.get('firstname').hasError('minlength')">Name must be at least 2 characters long</mat-error>
+      </mat-form-field>
+    
+    </mat-grid-tile>
+    
+    <mat-grid-tile class="matgrid">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="xyz@gmail.com" formControlName="email">
+        <mat-error *ngIf="patientForm.get('email').hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="patientForm.get('email').hasError('email')">Invalid email format</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="patientForm.get('password').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="patientForm.get('password').hasError('minlength')">Password must be at least 7 characters long</mat-error>
+      </mat-form-field>
+      
+      <button color="primary" [disabled]="!patientForm.valid" mat-raised-button>ADD</button>
+    </mat-grid-tile>
+    </mat-grid-list>  
+  </form> 

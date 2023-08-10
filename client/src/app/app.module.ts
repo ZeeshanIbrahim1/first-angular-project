@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import { LoginComponent } from './login/login.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
+import { PatientsComponent } from './components/patients/patients.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -17,8 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { PatientsComponent } from './patients/patients.component';
-
+import { MatGridListModule } from  '@angular/material/grid-list'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PatientsComponent } from './patients/patients.component';
     NavigationComponent,
     RegisterComponent,
     HomeComponent,
-    PatientsComponent
+    PatientsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,9 @@ import { PatientsComponent } from './patients/patients.component';
     MatToolbarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

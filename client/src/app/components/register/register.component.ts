@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators , AbstractControl, ValidatorFn } from '@angular/forms';
-// import {MatIconModule} from '@angular/material/icon';
-// import {MatInputModule} from '@angular/material/input';
-// import {MatFormFieldModule} from '@angular/material/form-field';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  // standalone : true,
-  // imports: [MatFormFieldModule, MatInputModule, MatIconModule],
 })
 export class RegisterComponent {
   registerForm : FormGroup;
 
+  constructor(private authService: AuthService){
+
+  }
 
   ngOnInit(): void{
     this.registerForm = this.createFormGroup();
@@ -34,7 +33,8 @@ export class RegisterComponent {
       return matchingControl && control.value !== matchingControl.value ? { passwordMismatch: true } : null;
     };}
   register(){
-      console.log(this.registerForm.value)
+      this.authService.signup(this.registerForm.value)
+      .subscribe((msg) => console.log(msg)  )
       this.registerForm.reset();
       this.clearErrorStates();
   }

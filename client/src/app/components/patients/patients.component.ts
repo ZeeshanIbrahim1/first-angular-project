@@ -18,15 +18,15 @@ export class PatientsComponent {
   createFormGroup(): FormGroup{
     return new FormGroup({
       firstname: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      lastname: new FormControl("", [Validators.required, Validators.minLength(2)]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required, Validators.minLength(7)]),
-      lastname : new FormControl("",[Validators.minLength(2)])
     })
   }
   // patientForm(){
 
   // }
-  register(){
+  addPatient(){
       console.log(this.patientForm.value)
   }
 }

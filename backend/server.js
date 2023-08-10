@@ -8,7 +8,6 @@ const errorController = require("./controllers/error")
 
 const authRoutes = require('./routes/auth');
 
-
 app.use(bodyParser.json());
 app.use( (req,res,next) =>{
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,6 +17,7 @@ app.use( (req,res,next) =>{
 })
 
 app.use('/auth', authRoutes);
+console.log("erorrrrrrrrr")
 app.use(errorController.get404);
 app.use(errorController.get500);
 
