@@ -19,7 +19,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatGridListModule } from  '@angular/material/grid-list'
+import { MatGridListModule } from  '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+// import {MatDatepickerModule} from '@angular/material/datepicker';
+// import {MatInputModule} from '@angular/material/input';
+// import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,9 @@ import { MatGridListModule } from  '@angular/material/grid-list'
     MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
