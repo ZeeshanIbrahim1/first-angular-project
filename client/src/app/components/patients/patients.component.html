@@ -44,16 +44,58 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </mat-grid-tile>
-    
+   
     <mat-grid-tile class="matgrid">
       <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
-        <mat-error *ngIf="patientForm.get('password').hasError('required')">Password is required</mat-error>
-        <mat-error *ngIf="patientForm.get('password').hasError('minlength')">Password must be at least 7 characters long</mat-error>
+        <mat-label>SSN</mat-label>
+        <input matInput formControlName="ssn">
+        <mat-error *ngIf="patientForm.get('ssn').hasError('required')">SSN is required</mat-error>
       </mat-form-field>
-      
+    </mat-grid-tile>
+
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+        <mat-error *ngIf="patientForm.get('address').hasError('required')">Address is required</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>  
+
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city">
+        <mat-error *ngIf="patientForm.get('city').hasError('required')">City is required</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>  
+
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+        <mat-error *ngIf="patientForm.get('state').hasError('required')">State is required</mat-error>
+      </mat-form-field>
+    </mat-grid-tile> 
+
+    <mat-grid-tile class="matgrid">
+      <mat-form-field appearance="outline">
+        <mat-label>Zip</mat-label>
+        <input matInput formControlName="zip">
+        <mat-error *ngIf="patientForm.get('zip').hasError('required')">Zip is required</mat-error>
+      </mat-form-field>
+    </mat-grid-tile> 
+
+    <mat-grid-tile class="matgrid">
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="matgrid">      
       <button color="primary" [disabled]="!patientForm.valid" mat-raised-button>ADD</button>
     </mat-grid-tile>
+
     </mat-grid-list>  
+     
   </form> 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PatientsComponent {
   patientForm : FormGroup;
 
-
+  constructor(private authService:AuthService){}
   ngOnInit(): void{
     this.patientForm = this.createFormGroup();
   }
@@ -20,7 +22,12 @@ export class PatientsComponent {
       firstname: new FormControl("", [Validators.required, Validators.minLength(2)]),
       lastname: new FormControl("", [Validators.required, Validators.minLength(2)]),
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required, Validators.minLength(7)]),
+      ssn: new FormControl("", [Validators.required]),
+      address: new FormControl("", [Validators.required]),
+      city: new FormControl("", [Validators.required]),
+      state: new FormControl("", [Validators.required]),
+      zip: new FormControl("", [Validators.required]),
+      gender: new FormControl("", [Validators.required])
     })
   }
   // patientForm(){
@@ -28,5 +35,6 @@ export class PatientsComponent {
   // }
   addPatient(){
       console.log(this.patientForm.value)
+      this.authService.patient(this.patientForm.value)
   }
 }

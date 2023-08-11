@@ -1,21 +1,30 @@
-const db = require('../util/database');
+'use strict';
 
-module.exports = class User{
-    constructor(name,email,password){
-        this.name = name; 
-        this.email = email;
-        this.password = password;
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    static associate(models) {
+      // define association here
     }
-
-    static find(email){
-        return db.execute(
-            'SELECT * FROM users WHERE email = ?', [email]
-        )
+    static findByEmail(email) {
+      return User.findOne({ where: { email } });
     }
-
-    static save(user){
-        return db.execute(
-            'INSERT INTO users (name,email,password) VALUES(?, ?, ?)', [user.name,user.email,user.password]  
-        )
-    }
+    static createUser(username, email, password) {
+      return User.create({
+        username,
+        email,
+        password,
+      });}
+  }
+  User.init({
+    username: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'User',
+  });
+  return User;
 };
